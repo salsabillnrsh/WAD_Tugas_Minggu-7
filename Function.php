@@ -1,6 +1,6 @@
 <?php 
 
-$conn = mysqli_connect('localhost', 'root', '', 'perabot'); 
+$conn = mysqli_connect('localhost', 'root', '', 'Apotek'); 
 
 function query($query) {
     global $conn;
@@ -12,40 +12,49 @@ function query($query) {
     return $rows;
 }
 
-function tambah($data) {
+function Tambah($data) {
     global $conn;
 
-    $nama = htmlspecialchars($data["nama"]);
-    $harga = htmlspecialchars($data["harga"]);
-    $gambar = htmlspecialchars($data["gambar"]);
+    $kodeobat = htmlspecialchars($data["Kode Obat"]);
+    $namaobat = htmlspecialchars($data["Nama Obat"]);
+    $jenisobat = htmlspecialchars($data["Jenis Obat"]);
+    $hargajual = htmlspecialchars($data["Harga Jual"]);
+    $stok = htmlspecialchars($data["stok"]);
+    $aksi = htmlspecialchars($data["aksi"]);
 
-    $query = "INSERT INTO toko
+    $query = "INSERT INTO Pendataan
         VALUES
-        ('','$nama','$harga','$gambar')
+        ('','$kodeobat','$namaobat','$jenisobbat','$hargajual','$stok','$aksi')
         ";
     mysqli_query($conn, $query); 
 
     return mysqli_affected_rows($conn);
 }
 
-function hapus($id) {
+function Hapus($id) {
     global $conn;
-    mysqli_query($conn, "DELETE FROM toko WHERE id = $id");
+    mysqli_query($conn, "DELETE FROM Pendataan WHERE id = $id");
     return mysqli_affected_rows($conn);
 }
 
-function ubah($data) {
+function Update($data) {
     global $conn;
 
     $id = $data["id"];
-    $nama = htmlspecialchars($data["nama"]);
-    $harga = htmlspecialchars($data["harga"]);
-    $gambar = htmlspecialchars($data["gambar"]);
+    $kodeobat = htmlspecialchars($data["Kode Obat"]);
+    $namaobat = htmlspecialchars($data["Nama Obat"]);
+    $jenisobat = htmlspecialchars($data["Jenis Obat"]);
+    $hargajual = htmlspecialchars($data["Harga Jual"]);
+    $stok = htmlspecialchars($data["stok"]);
+    $aksi = htmlspecialchars($data["aksi"]);
 
-    $query = "UPDATE toko SET
-            nama = '$nama',
-            harga = '$harga',
-            gambar = '$gambar'
+    $query = "UPDATE Pendataam SET
+            Kode obat = '$kodeobat',
+            Nama Obat = '$namaobat',
+            Jenis Obat = '$jenisobat',
+            Harga Jual = '$hatgajual',
+            Stok = '$stok',
+            Aksi = '$aski'
             WHERE id = $id
             ";
     mysqli_query($conn, $query); 
